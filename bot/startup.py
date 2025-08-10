@@ -51,17 +51,19 @@ config = {
 bot = commands.Bot(command_prefix=config[botType]['prefix'], intents=intents)
 bot.remove_command('help')  # Remove default help command before loading cogs
 
-async def setup_hook():
-    """Setup hook to load extensions."""
-    for extension in initial_extensions:
-        try:
-            await bot.load_extension(extension)
-            print('{} loaded'.format(extension))
-        except Exception as e:
-            print('issue with',extension)
-            traceback.print_exc()
+class StfcBot(commands.Bot):
+    async def setup_hook(self):
+        """Setup hook to load extensions."""
+        for extension in initial_extensions:
+            try:
+                await self.load_extension(extension)
+                print('{} loaded'.format(extension))
+            except Exception as e:
+                print('issue with',extension)
+                traceback.print_exc()
 
-bot.setup_hook = setup_hook
+bot = StfcBot(command_prefix=config[botType]['prefix'], intents=intents)
+bot.remove_command('help')  # Remove default help command before loading cogs
 
 @bot.event
 async def on_ready():
@@ -79,7 +81,7 @@ async def on_ready():
     print('Successfully logged in and booted...! Use prefix: "'+config[botType]['prefix']+'".\n\n')
 
 # Start your engines~~
-bot.run(config[botType]['token'], bot=True, reconnect=True)
+bot.run(config[botType]['token'], reconnect=True)
 
 @bot.event
 # special for ACE server
