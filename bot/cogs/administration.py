@@ -1,16 +1,27 @@
 import discord
 from discord.ext import commands
-import sys, asyncio
+import sys, asyncio, os
 from utils.functions import databaseReset, getSettings, getSetupSummary, isInAlliance
 from utils.data_database import deleteServerSettings
 
-configFile = open('config')
-configs = configFile.readlines()
-config = {
-    'OWNER': {
-        'id': (configs[3].split()[1]).split('\n')[0]
+# Get config file path
+config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config')
+try:
+    configFile = open(config_path)
+    configs = configFile.readlines()
+    config = {
+        'OWNER': {
+            'id': (configs[3].split()[2]).split('\n')[0] if len(configs) > 3 else 'OWNER_ID_HERE'  # OWNER id YOUR_ID -> [2] gets the ID
+        }
     }
-}
+    configFile.close()
+except FileNotFoundError:
+    # Fallback if config file doesn't exist or is malformed
+    config = {
+        'OWNER': {
+            'id': 'OWNER_ID_HERE'
+        }
+    }
 
 class AdministrationCog(commands.Cog):
     
@@ -152,8 +163,8 @@ class AdministrationCog(commands.Cog):
 
 
 # set the cog up
-def setup(bot):
-    bot.add_cog(AdministrationCog(bot))
+async def setup(bot):
+    await bot.add_cog(AdministrationCog(bot))
 
 
 

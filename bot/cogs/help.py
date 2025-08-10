@@ -202,8 +202,8 @@ class HelpCog(commands.Cog):
             
 
 # set the cog up
-def setup(bot):
-    bot.add_cog(HelpCog(bot))
+async def setup(bot):
+    await bot.add_cog(HelpCog(bot))
 
 
 

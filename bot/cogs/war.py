@@ -248,5 +248,5 @@ class WarCog(commands.Cog):
 
 
 # set the cog up
-def setup(bot):
-    bot.add_cog(WarCog(bot))
+async def setup(bot):
+    await bot.add_cog(WarCog(bot))
