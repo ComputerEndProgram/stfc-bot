@@ -1,12 +1,1 @@
-/bot/config
-*.db
-__pycache__
-/bot/utils/data_database.py
-/bot/utils/db.py
-/bot/utils/test_functions.py
-/bot/utils/update_resources.py
-/bot/utils/resources.txt
-.vscode/
-bot/.vscode/
-stfc_bot_data.pem
-/bot/cogs/test_cog.py
+
