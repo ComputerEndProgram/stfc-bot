@@ -357,5 +357,5 @@ class RegistrationCog(commands.Cog):
         
 
 # set the cog up
-def setup(bot):
-    bot.add_cog(RegistrationCog(bot))
+async def setup(bot):
+    await bot.add_cog(RegistrationCog(bot))
