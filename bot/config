@@ -1,7 +1,7 @@
 # Bot configuration file
-DATA token MTQwNDE3OTUzNzgyMjIyNDQ4NQ.G_GlF8.fAdCyi657AB1D-ONchQGtb03xmjPkgUD5Wo4IU
+DATA token MTQ...
 DATA prefix $
 # Test bot configuration
 # Test bot section
-DATAtestsim token MTQwNDE3OTUzNzgyMjIyNDQ4NQ.G_GlF8.fAdCyi657AB1D-ONchQGtb03xmjPkgUD5Wo4IU
+DATAtestsim token MTQ...
 DATAtestsim prefix $
