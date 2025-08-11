@@ -530,13 +530,15 @@ def getMember(member, members):
 
 def getMasterAllianceId(serverId):
     sql = '''
-        Select MasterAlliance
+        SELECT AllianceID
         FROM Alliance
         WHERE ServerID={}
         AND SubAlliance=0
     '''.format(serverId)
     res = queryDatabase(sql)
-    return res[0][0].upper()
+    if res and len(res) > 0:
+        return res[0][0].upper()
+    return None
 
 
 #   serverId: id for current server, from discord guild object

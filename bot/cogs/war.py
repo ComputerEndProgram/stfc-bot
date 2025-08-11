@@ -22,7 +22,10 @@ class WarCog(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
-
+        # Skip if message is not in a guild (e.g., DM)
+        if not message.guild:
+            return
+            
         channel = getWarPointsChannel(message.guild.id)
         if message.channel.name == channel and not message.author.bot and message.attachments:
 
@@ -212,9 +215,9 @@ class WarCog(commands.Cog):
 
 
                 if page > 1:
-                    await msg.add_reaction(emoji=self.prev)
+                    await msg.add_reaction(self.prev)
                 if page * maxPage < len(results):
-                    await msg.add_reaction(emoji=self.next)
+                    await msg.add_reaction(self.next)
 
                 reaction, user = await self.bot.wait_for('reaction_add', timeout=120.0, check=checkUser)
 

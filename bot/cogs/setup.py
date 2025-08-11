@@ -65,8 +65,8 @@ class SetupCog(commands.Cog):
             embed = discord.Embed(title=title, description=explanation+desc, color=1234123)
             embed.set_footer(text=footerText+' |    EXISTING SETTINGS')
             msg = await ctx.channel.send(embed=embed)
-            await msg.add_reaction(emoji='👍')
-            await msg.add_reaction(emoji='👎')
+            await msg.add_reaction('👍')
+            await msg.add_reaction('👎')
 
             try:
                 while True:
@@ -273,8 +273,8 @@ class SetupCog(commands.Cog):
             embed = discord.Embed(title=title, description=explanation+desc, color=1234123)
             embed.set_footer(text=footerText+' |    EXISTING SETTINGS')
             msg = await ctx.channel.send(embed=embed)
-            await msg.add_reaction(emoji='👍')
-            await msg.add_reaction(emoji='👎')
+            await msg.add_reaction('👍')
+            await msg.add_reaction('👎')
 
             try:
                 while True:
@@ -365,7 +365,7 @@ class SetupCog(commands.Cog):
 
             # add reactions corresponding to each role in list above.
             for i in range(len(roles)):
-                await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                await msg.add_reaction(ORDERED_REACTIONS[i])
             
             # interpret user interactions. Keep accepting responses until break logic
             while True:
@@ -388,7 +388,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each role in list above.
                 for i in range(len(roles)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
 
                 # add 'next' emoji once there is at least one selected role
                 if len(registerCommandRoleSelection) > 0:
@@ -419,8 +419,8 @@ class SetupCog(commands.Cog):
 
             # add reactions corresponding to each role in list above.
             for i in range(len(roles)):
-                await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
-            await msg.add_reaction(emoji='❌')
+                await msg.add_reaction(ORDERED_REACTIONS[i])
+            await msg.add_reaction('❌')
             
             # interpret user interactions. Keep accepting responses until break logic
             while True:
@@ -447,7 +447,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each role in list above.
                 for i in range(len(roles)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
 
                 # add 'next' emoji once there is at least one selected role
                 if len(ambassadorRoles) > 0:
@@ -480,8 +480,8 @@ class SetupCog(commands.Cog):
 
             # add reactions corresponding to each role in list above.
             for i in range(len(roles)):
-                await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
-            await msg.add_reaction(emoji='❌')
+                await msg.add_reaction(ORDERED_REACTIONS[i])
+            await msg.add_reaction('❌')
             
             # interpret user interactions. Keep accepting responses until break logic
             while True:
@@ -508,7 +508,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each role in list above.
                 for i in range(len(roles)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
 
                 # add 'next' emoji once there is at least one selected role
                 if len(ambassadorRoles) > 0:
@@ -539,7 +539,7 @@ class SetupCog(commands.Cog):
 
             # add reactions corresponding to each role in list above.
             for i in range(len(roles)):
-                await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                await msg.add_reaction(ORDERED_REACTIONS[i])
             
             # interpret user interactions. Keep accepting responses until break logic
             while True:
@@ -562,7 +562,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each role in list above.
                 for i in range(len(roles)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
 
                 # add 'next' emoji once there is at least one selected role
                 if len(registerCommandRoleSelection) > 0:
@@ -587,8 +587,8 @@ class SetupCog(commands.Cog):
             embed.set_footer(text=footerText+' |    step 5/10')
             await msg.clear_reactions()
             await msg.edit(embed=embed)
-            await msg.add_reaction(emoji='👍')
-            await msg.add_reaction(emoji='👎')
+            await msg.add_reaction('👍')
+            await msg.add_reaction('👎')
 
             while True:
                 #wait for user to react
@@ -625,8 +625,8 @@ class SetupCog(commands.Cog):
             embed.set_footer(text=footerText+' |    step 6/10')
             await msg.clear_reactions()
             await msg.edit(embed=embed)
-            await msg.add_reaction(emoji='👍')
-            await msg.add_reaction(emoji='👎')
+            await msg.add_reaction('👍')
+            await msg.add_reaction('👎')
 
             while True:
                 #wait for user to react
@@ -665,7 +665,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each role in list above.
                 for i in range(len(roles)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
 
                 # interpret user interactions. Keep accepting responses until break logic
                 while True:
@@ -686,7 +686,7 @@ class SetupCog(commands.Cog):
                     await msg.clear_reactions()
                     await msg.edit(embed=embed)
                     for i in range(len(roles)):
-                        await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                        await msg.add_reaction(ORDERED_REACTIONS[i])
 
                     # add 'next' emoji once there is at least one selected role
                     if len(privateChannelRoleSelection) > 0:
@@ -717,7 +717,7 @@ class SetupCog(commands.Cog):
 
                 # add reactions corresponding to each category on the server.
                 for i in range(len(categories)):
-                    await msg.add_reaction(emoji=ORDERED_REACTIONS[i])
+                    await msg.add_reaction(ORDERED_REACTIONS[i])
                 
                 # this step is optional, so add next reaction for them to skip
                 await msg.add_reaction(self.next)
@@ -755,8 +755,8 @@ class SetupCog(commands.Cog):
                 embed.set_footer(text=footerText+' |    step 9/10')
                 await msg.clear_reactions()
                 await msg.edit(embed=embed)
-                await msg.add_reaction(emoji='👍')
-                await msg.add_reaction(emoji='👎')
+                await msg.add_reaction('👍')
+                await msg.add_reaction('👎')
 
                 while True:
                     #wait for user to react
@@ -782,8 +782,8 @@ class SetupCog(commands.Cog):
             embed.set_footer(text=footerText+' |    step 10/10')
             await msg.clear_reactions()
             await msg.edit(embed=embed)
-            await msg.add_reaction(emoji='✅')
-            await msg.add_reaction(emoji='❌')
+            await msg.add_reaction('✅')
+            await msg.add_reaction('❌')
 
             while True:
             

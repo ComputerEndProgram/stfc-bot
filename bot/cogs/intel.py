@@ -246,9 +246,9 @@ class IntelCog(commands.Cog):
 
 
                     if page > 1:
-                        await msg.add_reaction(emoji=self.prev)
+                        await msg.add_reaction(self.prev)
                     if page * maxPage < len(results):
-                        await msg.add_reaction(emoji=self.next)
+                        await msg.add_reaction(self.next)
 
                     reaction, user = await self.bot.wait_for('reaction_add', timeout=120.0, check=checkUser)
 
@@ -471,9 +471,9 @@ class IntelCog(commands.Cog):
 
 
                     if page > 1:
-                        await msg.add_reaction(emoji=self.prev)
+                        await msg.add_reaction(self.prev)
                     if page * maxPage < len(results):
-                        await msg.add_reaction(emoji=self.next)
+                        await msg.add_reaction(self.next)
 
                     reaction, user = await self.bot.wait_for('reaction_add', timeout=120.0, check=checkUser)
 
