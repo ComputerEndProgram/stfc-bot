@@ -271,19 +271,19 @@ class ResourcesCog(commands.Cog):
                 firstPass = False
 
                 if hasEmojis:
-                    await msg.add_reaction(emoji='❓')
+                    await msg.add_reaction('❓')
 
                 # determine which emojis to add to interface, based on page number and current filters
                 if page > 1:
-                    await msg.add_reaction(emoji=self.prev)
+                    await msg.add_reaction(self.prev)
                 if page * pageMax < len(results):
-                    await msg.add_reaction(emoji=self.next)
+                    await msg.add_reaction(self.next)
                 if hasEmojis and resource:
-                    await msg.add_reaction(emoji=getEmoji(ctx.guild.emojis, resource))
+                    await msg.add_reaction(getEmoji(ctx.guild.emojis, resource))
                 if hasEmojis and tier:
-                    await msg.add_reaction(emoji=getEmoji(ctx.guild.emojis, '{}star'.format(tier)))
+                    await msg.add_reaction(getEmoji(ctx.guild.emojis, '{}star'.format(tier)))
                 if hasEmojis and region:
-                    await msg.add_reaction(emoji=getEmoji(ctx.guild.emojis, region))
+                    await msg.add_reaction(getEmoji(ctx.guild.emojis, region))
 
                 task_1 = asyncio.ensure_future(self.bot.wait_for('reaction_add', timeout=60.0, check=checkUser))
                 task_2 = asyncio.ensure_future(self.bot.wait_for('reaction_remove', timeout=60.0, check=checkUser))
@@ -372,7 +372,7 @@ class ResourcesCog(commands.Cog):
                     embed = discord.Embed(title='**STFC Resources**', description=help, color=000000)
                     embed.set_footer(text='RESOURCES HELP MENU | Select {} to return'.format('❌'))
                     await msg.edit(embed=embed)
-                    await msg.add_reaction(emoji='❌')
+                    await msg.add_reaction('❌')
                     while True:
                         reaction, user = await self.bot.wait_for('reaction_add', timeout=60.0, check=checkUser)
                         if reaction.emoji == '❌':
