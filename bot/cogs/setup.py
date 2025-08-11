@@ -16,7 +16,7 @@ from utils.functions import (
     getWarInfo,
     getMasterAllianceId
 )
-from utils.db import saveSettings, saveGeneralInfo, saveAlliance, setNewMaster
+from utils.db import saveSettings, saveGeneralInfo, saveAlliance, setNewMaster, saveRolePermissions
 from utils.constants import ORDERED_REACTIONS, IN_MESSAGE_REACTIONS, GITHUB
 
 
@@ -791,20 +791,35 @@ class SetupCog(commands.Cog):
                 
                 # if user reacts with 'NEXT', move to next interface
                 if reaction.emoji == '✅':
+                    # Save server settings
                     saveSettings(
                         ctx.guild.id,
-                        ctx.guild.name,
-                        allianceAcronym,
+                        allianceAcronym,  # Use alliance acronym instead of guild name
                         allowManualRegister,
                         allowPrivateChannelCreation,
-                        selectedCategory.name if selectedCategory else '', 
-                        memberRoles,
-                        ambassadorRoles,
-                        allyRoles,
-                        registerCommandRoleSelection,
-                        privateChannelRoleSelection,
+                        selectedCategory.name if selectedCategory else '',
                         allowAllyIntelAccess
                     )
+                    
+                    # Save role permissions for each role
+                    for i, role in enumerate(roles):
+                        memberRole = 1 if i < len(memberRoles) and memberRoles[i].get('selected', False) else 0
+                        ambassadorRole = 1 if i < len(ambassadorRoles) and ambassadorRoles[i].get('selected', False) else 0
+                        allyRole = 1 if i < len(allyRoles) and allyRoles[i].get('selected', False) else 0
+                        adminRole = 1 if i < len(registerCommandRoleSelection) and registerCommandRoleSelection[i].get('selected', False) else 0
+                        accessAmbassadorChannels = 1 if i < len(privateChannelRoleSelection) and privateChannelRoleSelection[i].get('selected', False) else 0
+                        
+                        # Only save if at least one permission is set for this role
+                        if memberRole or ambassadorRole or allyRole or adminRole or accessAmbassadorChannels:
+                            saveRolePermissions(
+                                ctx.guild.id,
+                                role.name,
+                                memberRole,
+                                ambassadorRole,
+                                allyRole,
+                                adminRole,
+                                accessAmbassadorChannels
+                            )
 
                     explanation = '**SETUP COMPLETE**\n\n To review your settings, you can use the command **.settings**. '
                     explanation += 'If at any time you wish to reset the current settings, run **.setup <alliance acronym>** '

@@ -46,13 +46,13 @@ def saveAlliance(serverId, allianceId, subAlliance=0):
     '''
     return executeQuery(sql, (serverId, allianceId, subAlliance))
 
-def saveSettings(serverId, allianceName, manualRegister, createChannel, channelCategory):
+def saveSettings(serverId, allianceName, manualRegister, createChannel, channelCategory, allowAllyIntelAccess=0):
     """Save server settings."""
     sql = '''
-        INSERT OR REPLACE INTO Server (ServerID, AllianceName, ManualRegister, CreateChannel, ChannelCategory)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT OR REPLACE INTO Server (ServerID, AllianceName, ManualRegister, CreateChannel, ChannelCategory, AllowAllyIntelAccess)
+        VALUES (?, ?, ?, ?, ?, ?)
     '''
-    return executeQuery(sql, (serverId, allianceName, manualRegister, createChannel, channelCategory))
+    return executeQuery(sql, (serverId, allianceName, manualRegister, createChannel, channelCategory, allowAllyIntelAccess))
 
 def saveGeneralInfo(serverId, homeInfo='', roeRules='', alliesInfo='', napInfo='', cogInfo='', kosInfo='', warInfo=''):
     """Save general alliance information."""
